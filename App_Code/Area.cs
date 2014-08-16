@@ -12,6 +12,14 @@ namespace rapidInfoModel
         {
         }
 
+        public static List<Area> GetData(string term)
+        {
+            using (rapidInfoEntities context = new rapidInfoEntities())
+            {
+                return context.Areas.Where(m => m.Name.ToLower().StartsWith(term.ToLower()) || m.Name.ToLower().Contains(term.ToLower())).ToList();
+            }
+        }
+
         public static List<Area> GetData()
         {
             using (rapidInfoEntities context = new rapidInfoEntities())

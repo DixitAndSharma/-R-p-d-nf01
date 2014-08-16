@@ -40,8 +40,13 @@ public partial class GetData : System.Web.UI.Page
             switch (Action)
             {
                 case "GetAreas": GetAreas(); break;
+                case "SearchAreas":
+                    SearchAreas(term);
+                    Cmn.WriteResponse(this, sb.ToString(), encode);
+                    return;
 
-               
+                //SearchAreas
+
             }
 
             if (!AttachError)
@@ -64,7 +69,47 @@ public partial class GetData : System.Web.UI.Page
 
     void GetAreas()
     {
-      //  List<Area> list = Area.GetData();
+        List<rapidInfoModel.Area> list = rapidInfoModel.Area.GetData();
+
+        foreach (rapidInfoModel.Area a in list)
+        {
+            sb.Append(a.Id + "^" + a.Name + "^" + a.ParentId + "~");
+        }
+
     }
-    
+
+    void SearchAreas(string term)
+    {
+        if (term == "")
+            return;
+
+        List<rapidInfoModel.Area> list = rapidInfoModel.Area.GetData(term);
+
+        StringBuilder Result = new StringBuilder();
+        int ctr = 0;
+        foreach (rapidInfoModel.Area a in list)
+        {
+            Result.Append(",{\"id\":\"" + a.Id
+                + "\",\"label\":\"" + a.Name
+                + "\",\"value\":\"" + a.Name
+                + "\",\"Name\":\"" + a.Name
+                + "\"}");
+
+            if (ctr++ > 5)
+                break;
+        }
+
+        if (Result.Length > 0)
+            sb.Append("[" + Result.ToString().Substring(1) + "]");
+
+    }
+
+    public List<Area> GetAreaData()
+    {
+        using (rapidInfoEntities context = new rapidInfoEntities())
+        {
+            return context.Areas.ToList();
+        }
+    }
+
 }
