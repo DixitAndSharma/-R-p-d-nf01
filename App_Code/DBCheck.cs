@@ -91,6 +91,7 @@ public class DBCheck
             case 2://Identity
 
                 fields.Add("Id", "[int]");
+                fields.Add("Name", "[nvarchar](1000)");
                 fields.Add("DetailsLength", "[int]");
                 fields.Add("Details", "[image]");
                 fields.Add("LastUpdate", "[datetime]");

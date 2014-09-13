@@ -11,6 +11,7 @@
 
         function GetAreas() {
 
+            $.fancybox.close();
             $.ajax({
                 cache: false, async: false, url: "/Data.aspx?Action=GetAreas", success: function (data) {
 
@@ -23,9 +24,12 @@
 
                         console.log(f);
 
-                        str += "<tr><td><a title='Area Edit' class='fancybox fancybox.iframe' href='/Edit/AreaEdit.aspx?Id="
-                    + f[0] + "&Title=Area Edit'>" + f[0] + "</a><td>" + f[1] + "<td>" + f[2];
+                        str += "<tr><td><a title='Area Edit' class='fancybox fancybox.iframe' href='/Edit/AreaEdit.aspx?id="
+                    + f[0] + "&Title=Area Edit'>" + f[0] + "</a><td>" + f[1] + "<td>" + f[3];
                     }
+
+                    str += "<tr><td colspan='3'><a title='Area Edit' class='btn btn-success fancybox fancybox.iframe' href='/Edit/AreaEdit.aspx?id=0"
+                    + "&Title=Area Edit'>Add Area</a>";
 
                     str += "</table>";
 

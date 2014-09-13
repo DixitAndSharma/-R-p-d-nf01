@@ -5,63 +5,55 @@ using System.Collections.Generic;
 
 namespace rapidInfoModel
 {
-    public partial class Area
+    public partial class Identity
     {
 
-        public Area()
+        public Identity()
         {
         }
 
-        public static List<Area> GetData(string term)
-        {
-            using (rapidInfoEntities context = new rapidInfoEntities())
-            {
-                return context.Areas.Where(m => m.Name.ToLower().StartsWith(term.ToLower()) || m.Name.ToLower().Contains(term.ToLower())).ToList();
-            }
-        }
-
-        public static List<Area> GetData()
+        public static List<Identity> GetData()
         {
             using (rapidInfoEntities context = new rapidInfoEntities())
             {
-                return context.Areas.ToList();
+                return context.Identities.ToList();
             }
         }
 
-        public static Area GetData(int id)
+        public static Identity GetData(int id)
         {
             using (rapidInfoEntities context = new rapidInfoEntities())
             {
-                return context.Areas.FirstOrDefault(m => m.Id == id);
+                return context.Identities.FirstOrDefault(m => m.Id == id);
             }
         }
 
-        public Area Save()
+        public Identity Save()
         {
             try
             {
                 using (rapidInfoEntities context = new rapidInfoEntities())
                 {
-                    var temp = context.Areas.FirstOrDefault(m => m.Id == Id);
+                    var temp = context.Identities.FirstOrDefault(m => m.Id == Id);
                     Boolean IsNew = temp == null ? true : false;
 
                     if (Id == 0)
                     {
                         Id = 1;
-                        try { Id = context.Areas.Max(m => m.Id) + 1; }
+                        try { Id = context.Identities.Max(m => m.Id) + 1; }
                         catch { }
                         IsNew = true;
                     }
 
                     LUDate = DateTime.Now;
                     if (IsNew)
-                        context.AddToAreas(this);
+                        context.AddToIdentities(this);
                     else
                     {
                         if (temp != null)
-                            context.CreateObjectSet<Area>().Detach(temp);
+                            context.CreateObjectSet<Identity>().Detach(temp);
 
-                        context.CreateObjectSet<Area>().Attach(this);
+                        context.CreateObjectSet<Identity>().Attach(this);
                         context.ObjectStateManager.ChangeObjectState(this, EntityState.Modified);
                     }
                     context.SaveChanges();

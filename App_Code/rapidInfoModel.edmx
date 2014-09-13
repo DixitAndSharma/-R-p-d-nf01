@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="rapidInfoModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="rapidInfoModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="rapidInfoModelStoreContainer">
           <EntitySet Name="Area" EntityType="rapidInfoModel.Store.Area" store:Type="Tables" />
           <EntitySet Name="AreaLink" EntityType="rapidInfoModel.Store.AreaLink" store:Type="Tables" />
@@ -49,9 +49,9 @@
           <Property Name="CRC" Type="nvarchar" MaxLength="50" />
           <Property Name="MachineID" Type="nvarchar" MaxLength="36" />
           <Property Name="DirtyFlag" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="rapidInfoModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -99,6 +99,7 @@
           <Property Name="CRC" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MachineID" Type="String" MaxLength="36" Unicode="true" FixedLength="false" />
           <Property Name="DirtyFlag" Type="Int32" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -136,6 +137,7 @@
           <EntitySetMapping Name="Identities">
             <EntityTypeMapping TypeName="rapidInfoModel.Identity">
               <MappingFragment StoreEntitySet="Identity">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DetailsLength" ColumnName="DetailsLength" />
                 <ScalarProperty Name="Details" ColumnName="Details" />

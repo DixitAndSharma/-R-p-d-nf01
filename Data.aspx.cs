@@ -40,6 +40,9 @@ public partial class GetData : System.Web.UI.Page
             switch (Action)
             {
                 case "GetAreas": GetAreas(); break;
+                case "GetIdentity": GetIdentity(); break;
+                case "LinkAreas": LinkAreas(Cmn.ToInt(Data1), Cmn.ToInt(Data2)); break;
+
                 case "SearchAreas":
                     SearchAreas(term);
                     Cmn.WriteResponse(this, sb.ToString(), encode);
@@ -67,13 +70,56 @@ public partial class GetData : System.Web.UI.Page
         return Request.QueryString[Key] != null ? Request.QueryString[Key].ToString() : Default;
     }
 
+    void LinkAreas(int AreaId, int IdentityId)
+    {
+        rapidInfoModel.AreaLink a = new rapidInfoModel.AreaLink();
+
+        a.AreaId = AreaId;
+        a.IdentityId = IdentityId;
+        a.Save();
+
+    }
+
     void GetAreas()
     {
         List<rapidInfoModel.Area> list = rapidInfoModel.Area.GetData();
 
         foreach (rapidInfoModel.Area a in list)
         {
-            sb.Append(a.Id + "^" + a.Name + "^" + a.ParentId + "~");
+            rapidInfoModel.Area parent = rapidInfoModel.Area.GetData(Cmn.ToInt(a.ParentId));
+
+            sb.Append(a.Id + "^" + a.Name + "^" + a.ParentId + "^");
+
+            if (parent != null)
+                sb.Append(parent.Name);
+
+            sb.Append("~");
+        }
+
+    }
+
+    void GetIdentity()
+    {
+        List<rapidInfoModel.Identity> list = rapidInfoModel.Identity.GetData();
+
+        foreach (rapidInfoModel.Identity a in list)
+        {
+            List<rapidInfoModel.AreaLink> Areas = rapidInfoModel.AreaLink.GetData(Cmn.ToInt(a.Id));
+
+            sb.Append(a.Id + "^" + a.Name + "^");
+
+            if (Areas.Count != 0)
+            {
+                foreach (rapidInfoModel.AreaLink al in Areas)
+                {
+                    rapidInfoModel.Area area = rapidInfoModel.Area.GetData(al.AreaId);
+
+                    sb.Append(area.Name + ",");
+                }
+            }
+
+            sb.Append("^");
+            sb.Append("~");
         }
 
     }

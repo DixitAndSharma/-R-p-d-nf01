@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AreaEdit.aspx.cs" Inherits="Edit_AreaEdit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="IdentityEdit.aspx.cs" Inherits="Edit_AreaEdit" %>
 
 <!DOCTYPE html>
 
@@ -11,31 +11,21 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/docs.min.css" rel="stylesheet" />
     <link href="../css/site.css" rel="stylesheet" />
-    <script src="../js/jquery-ui-autocomplete.min.js"></script>
+    
+    <link href="/css/jquery.cleditor.css" rel="stylesheet" />
+    <script src="/js/jquery.cleditor.min.js"></script>
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () {
+            try {
+                var HTMLEDITCONT = "bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | undo redo | link unlink | cut copy paste pastetext | print source";
+                $("#txtDetails").cleditor({ width: '100%', height: 200, useCSS: true });
 
-            $("#txtParentName").autocomplete({
-                maxheight: 40, maxwidth: 40,
-                minLength: 1, select: function (event, ui) {
-                    
-                    $("#txtParentId").val(ui.item.id);
-
-                }, source: SendRequest, autoFocus: true
-            });
-
+            } catch (e) {
+                console.log(e);
+            }
 
         });
-
-        function SendRequest(request, response) {
-            var term = request.term;
-
-            lastXhr = $.getJSON("/Data.aspx?Action=SearchAreas", request, function (data, status, xhr) {
-                if (xhr === lastXhr)
-                    response(data);
-            });
-        }
 
     </script>
 </head>
@@ -57,19 +47,18 @@
                         <asp:TextBox runat="server" ID="txtName"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td>Parent
+                    <td>Details
                     </td>
                     <td>
-                        <asp:TextBox runat="server" ID="txtParentName"></asp:TextBox>
-                        <asp:HiddenField runat="server" ID="txtParentId" />
+                        <textarea id="txtDetails" rows="4" runat="server" width="95%"></textarea>
                     </td>
                 </tr>
 
                 <tr>
+                    <td></td>
                     <td>
+                        <asp:Button Text="Save" runat="server" OnClick="Unnamed1_Click1" />
                     </td>
-                    <td>
-                        <asp:Button Text="Save" runat="server" OnClick="Unnamed1_Click" />                    </td>
                 </tr>
 
             </table>
