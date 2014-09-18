@@ -28,6 +28,14 @@ namespace rapidInfoModel
             }
         }
 
+        public static Identity GetData(string name)
+        {
+            using (rapidInfoEntities context = new rapidInfoEntities())
+            {
+                return context.Identities.FirstOrDefault(m => m.Name.Replace(" ", "").ToLower() == name.Replace(" ", "").ToLower());
+            }
+        }
+
         public Identity Save()
         {
             try

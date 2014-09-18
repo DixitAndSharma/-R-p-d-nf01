@@ -11,7 +11,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/docs.min.css" rel="stylesheet" />
     <link href="../css/site.css" rel="stylesheet" />
-    
+    <script src="../js/jquery.min.js"></script>
     <link href="/css/jquery.cleditor.css" rel="stylesheet" />
     <script src="/js/jquery.cleditor.min.js"></script>
 
@@ -55,11 +55,23 @@
                 </tr>
 
                 <tr>
-                    <td></td>
                     <td>
-                        <asp:Button Text="Save" runat="server" OnClick="Unnamed1_Click1" />
+                        <asp:Label runat="server" ID="lblImage"></asp:Label></td>
+                    <td>
+                        <asp:FileUpload ID="FileUpload" runat="server" />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Only image files are allowed!" ForeColor="Red" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.jpeg|.gif|.bmp)$" ControlToValidate="FileUpload"
+                            Display="Dynamic"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <asp:Button Text="Save" CssClass="btn btn-success" runat="server" OnClick="Unnamed1_Click1" />
+                    </td>
+                </tr>
+
+                
 
             </table>
         </div>

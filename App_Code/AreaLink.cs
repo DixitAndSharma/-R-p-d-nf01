@@ -19,6 +19,14 @@ namespace rapidInfoModel
                 return context.AreaLinks.Where(m => m.IdentityId == identityId).ToList();
             }
         }
+        
+        public static List<AreaLink> GetDataByArea(int areaId)
+        {
+            using (rapidInfoEntities context = new rapidInfoEntities())
+            {
+                return context.AreaLinks.Where(m => m.AreaId == areaId).ToList();
+            }
+        }
 
         public AreaLink Save()
         {

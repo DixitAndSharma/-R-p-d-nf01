@@ -28,7 +28,7 @@
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="../getting-started">People</a>
+                        <a href="../people">People</a>
                     </li>
                     <li>
                         <a href="../css">Destination</a>

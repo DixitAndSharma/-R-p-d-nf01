@@ -44,4 +44,5 @@ public partial class Identity
     public string CRC { get; set; }
     public string MachineID { get; set; }
     public Nullable<int> DirtyFlag { get; set; }
+    public string Name { get; set; }
 }

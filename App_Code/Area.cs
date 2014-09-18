@@ -20,6 +20,22 @@ namespace rapidInfoModel
             }
         }
 
+        public static List<Area> GetDataByParent(int ParentId)
+        {
+            using (rapidInfoEntities context = new rapidInfoEntities())
+            {
+                return context.Areas.Where(m => m.ParentId==ParentId).ToList();
+            }
+        }
+
+        public static Area GetDataByName(string name)
+        {
+            using (rapidInfoEntities context = new rapidInfoEntities())
+            {
+                return context.Areas.FirstOrDefault(m => m.Name.Replace(" ", "").ToLower() == name.Replace(" ", "").ToLower());
+            }
+        }
+
         public static List<Area> GetData()
         {
             using (rapidInfoEntities context = new rapidInfoEntities())

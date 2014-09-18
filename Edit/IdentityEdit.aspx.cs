@@ -24,6 +24,8 @@ public partial class Edit_AreaEdit : BasePage
             txtName.Text = a.Name;
 
             txtDetails.InnerHtml = Cmn.GetUnCompressed(a.Details, (int)a.DetailsLength);
+
+            lblImage.Text = "<img src='" + ResolveClientUrl(@"~/Images/identity/" + a.Id + ".jpg") + "' alt='" + a.Name + "' height='80' />";
         }
 
     }
@@ -38,6 +40,19 @@ public partial class Edit_AreaEdit : BasePage
         a.Details = Cmn.GetCompressed(txtDetails.InnerText);
         a.DetailsLength = txtDetails.InnerText.Length;
         a.Save();
+
+
+        if (a != null)
+        {
+
+            string FileName = @"~\Images\identity\" + a.Id + ".jpg";
+
+            if (FileUpload.HasFile != false)
+            {
+                try { FileUpload.SaveAs(ResolveClientUrl(FileName)); RegularExpressionValidator1.Visible = false; }
+                catch (Exception ex) { Cmn.LogError(ex, "Image"); }
+            }
+        }
 
         WriteClientScript("parent.GetIdentity();");
     }
