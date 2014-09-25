@@ -4,12 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>RapidInfo- Indian Personalities at a glance </title>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/docs.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
+    <script src="js/site.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -28,17 +29,17 @@
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="../people">People</a>
+                        <a href="#">People</a>
+                    </li>
+<%--                    <li>
+                        <a href="#">Destination</a>
                     </li>
                     <li>
-                        <a href="../css">Destination</a>
+                        <a href="#">Events</a>
                     </li>
                     <li>
-                        <a href="../components">Events</a>
-                    </li>
-                    <li>
-                        <a href="../javascript">Religions</a>
-                    </li>
+                        <a href="#">Religions</a>
+                    </li>--%>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">

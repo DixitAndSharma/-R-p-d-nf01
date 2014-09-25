@@ -1,9 +1,19 @@
-﻿body {
-    font-family: Verdana,Arial,sans-serif;
+﻿
+html,body{
+    margin:0;
+    padding:0;
+    height:100%;
+    
 }
+body {
+    font-family: Verdana,Arial,sans-serif;
+background-image: url(/image/background0.jpg);
+}
+
 
 header {
     border-bottom: 2px solid #563d7c !important;
+    z-index:2;
 }
 
 .mainDiv {
