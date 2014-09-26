@@ -1,7 +1,7 @@
 ﻿(function ()
 {
     var curImgId = 0;
-    var numberOfImages = 3; // Change this to the number of background images
+    var numberOfImages = 4; // Change this to the number of background images
     window.setInterval(function ()
     {
         $('body').css('background-image', 'url(/image/background' + curImgId + '.jpg)');
