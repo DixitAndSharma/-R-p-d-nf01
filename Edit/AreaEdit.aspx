@@ -9,8 +9,6 @@
     <link href="../css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />
     <script src="../js/bootstrap.min.js"></script>
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../css/docs.min.css" rel="stylesheet" />
-    <link href="../css/site.css" rel="stylesheet" />
     <script src="../js/jquery-ui-autocomplete.min.js"></script>
 
     <script>
