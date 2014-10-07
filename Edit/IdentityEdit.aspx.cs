@@ -10,8 +10,10 @@ public partial class Edit_AreaEdit : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        int ID = Cmn.ToInt(Request.QueryString["id"]);
-        ShowData(ID);
+        string ID = Request.QueryString["id"];
+
+        if (!string.IsNullOrWhiteSpace(ID))
+            ShowData(Cmn.ToInt(ID));
     }
 
     void ShowData(int id)

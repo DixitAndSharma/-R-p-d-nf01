@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="IdentityEdit.aspx.cs" Inherits="Edit_AreaEdit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="IdentityEdit.aspx.cs" Inherits="Edit_AreaEdit" ValidateRequest="false" %>
 
 <!DOCTYPE html>
 

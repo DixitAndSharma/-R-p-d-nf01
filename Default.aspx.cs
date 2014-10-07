@@ -56,10 +56,7 @@ public partial class _Default : BasePage
         else
         {
 
-
-            //str += "<h1>";
-
-            foreach (rapidInfoModel.AreaLink al in alList)
+            if (alList.Count > 0)
             {
                 str += "<h1>" + a.Name + "</h1><br/>";
 
@@ -74,7 +71,6 @@ public partial class _Default : BasePage
 
                 str += "</ul>";
             }
-
 
         }
 

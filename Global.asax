@@ -8,6 +8,12 @@
     {
         // Code that runs on application startup
         InitializeRoutes(RouteTable.Routes);
+
+        ScriptManager.ScriptResourceMapping.AddDefinition("jquery", new ScriptResourceDefinition
+        {
+            Path = "~/xrm-adx/js/jquery-1.8.3.min.js",
+            DebugPath = "~/xrm-adx/js/jquery-1.8.3.min.js"
+        });
     }
 
     private void InitializeRoutes(RouteCollection routes)
