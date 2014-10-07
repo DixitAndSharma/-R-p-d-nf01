@@ -84,7 +84,7 @@ public class DBCheck
                 fields.Add("Id", "[int]");
                 fields.Add("Name", "[nvarchar](1000)");
                 fields.Add("ParentId", "[int]");
-                
+
                 CheckTable(db, "Area", fields, new string[] { "Id" });
                 break;
 
@@ -105,6 +105,24 @@ public class DBCheck
                 fields.Add("IdentityId", "[int]");
 
                 CheckTable(db, "AreaLink", fields, new string[] { "IdentityId", "AreaId" });
+                break;
+
+            case 4://Feature
+
+                fields.Add("Id", "[int]");
+                fields.Add("Name", "[int]");
+
+                CheckTable(db, "Feature", fields, new string[] { "Id" });
+                break;
+
+            case 5://AreaFeatureValue
+
+                fields.Add("Id", "[int]");
+                fields.Add("AreaId", "[int]");
+                fields.Add("FeatureId", "[int]");
+                fields.Add("Value", "[int]");
+
+                CheckTable(db, "AreaFeatureValue", fields, new string[] { "Id" });
                 break;
         }
         return true;

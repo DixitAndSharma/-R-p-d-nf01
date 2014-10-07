@@ -212,3 +212,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+RapidInfo.v11.suo
+App_Data/rapidInfo.sdf
+css/site.css
