@@ -10,12 +10,14 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
     <script src="js/site.js"></script>
+    <link href="css/mash.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
         <div class="container">
+
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -23,32 +25,71 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="../" class="navbar-brand">RapidInfo</a>
+                <span id="logo">
+                    <a href="../" class="navbar-brand">RapidInfo</a>
+                    <img src="image/logo.png" />
+                </span>
+
+
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="#">People</a>
+                        <a href="#">People               
+                        </a>
+
                     </li>
-<%--                    <li>
-                        <a href="#">Destination</a>
-                    </li>
-                    <li>
-                        <a href="#">Events</a>
-                    </li>
-                    <li>
-                        <a href="#">Religions</a>
-                    </li>--%>
+
                 </ul>
+
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search" />
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
             </nav>
         </div>
     </header>
+    <div id="main-menu">
+        <div id="menulist">
+            <ul class="list">
+                <li class="active">All Categories</li>
+                <li>Entertainment</li>
+                <li>Sports</li>
+                <li>Potitics</li>
+                <li>Business</li>
+                <li>Science & Technology</li>
+                <li>Literature</li>
+            </ul>
+            <ul class="cat">
+                <li>
+                    <a href="#">
+                        <img src="image/entertainment.jpg" />Entertainment</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="image/sports.jpg" />Sports</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="image/politics.jpg" />Politics</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="image/science_and_technology.jpg" />Science and Technology</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="image/literature.jpg" />Literature</a>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
 
     <div class="container">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

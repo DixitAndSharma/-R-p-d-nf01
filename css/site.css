@@ -7,25 +7,78 @@ html,body{
 }
 body {
     font-family: Verdana,Arial,sans-serif;
-background-image: url(/image/background3.jpg);
+-background-image: url(/image/background3.jpg);
 }
 
 
 header {
     border-bottom: 2px solid #563d7c !important;
     z-index:2;
+    position:fixed;
+    background-color:skyblue;
+    
+}
+.container{
+    
+}
+.navbar-brand{
+    color:#ffffff !important;
+    font-size:23px;
+}
+div#main-menu{
+    -display:none;
+    -width:1800px;
+    height:199px;
+    border:1px solid red;
+    margin:auto;
+    padding:20px 0;
+    -overflow:hidden;
+    clear:both;
+    border-top:none;
+   
+    
+}
+div#menulist{
+    max-width:1339px;
+    margin:0 auto;
 }
 
-.mainDiv {
-    padding-top: 40px;
+li.active:hover div#main-menu {
+    -display:block;
+
+}
+ul.cat img{
+margin-bottom: 12px;
+width: 200px;
+height: 115px;
+background: rgba(0,0,0,0.5);
+display: block;
 }
 
-.profileImg {
-    border: 2px solid #563d7c;
-    padding: 5px;
-    margin-bottom: 20px;
-    border-radius: 3px;
-    width: 100%;
+ul.cat {
+    width:84%;
+list-style: none;
+display: inline-block;
+vertical-align: top;
+margin: 0;
+padding: 0;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+position: relative;
+float:left;
+
+
+}
+ul.cat li{
+white-space: normal;
+margin: 0 10px;
+vertical-align: top;
+width: 200px;
+display: inline-block;
+}
+ul.list{
+    width:15%;
+    float:left;
 }
 
 p {
@@ -34,4 +87,7 @@ p {
 
 .leftPanel {
     text-align:center
+}
+.navbar{
+    margin-bottom:0;
 }
