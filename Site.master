@@ -11,6 +11,7 @@
     <link href="css/site.css" rel="stylesheet" />
     <script src="js/site.js"></script>
     <link href="css/mash.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="image/icon.png" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -65,23 +66,23 @@
             </ul>
             <ul class="cat">
                 <li>
-                    <a href="#">
+                    <a href="/entertainment">
                         <img src="image/entertainment.jpg" />Entertainment</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sports">
                         <img src="image/sports.jpg" />Sports</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/politics">
                         <img src="image/politics.jpg" />Politics</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/scienceandtechnology">
                         <img src="image/science_and_technology.jpg" />Science and Technology</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/literature">
                         <img src="image/literature.jpg" />Literature</a>
                 </li>
 

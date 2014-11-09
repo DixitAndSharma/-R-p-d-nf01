@@ -9,76 +9,76 @@ public partial class _Default : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-    //    base.Page_Load(sender, e);
+        base.Page_Load(sender, e);
 
-    //    string str = "";
-    //    if (Action == "")
-    //        Action = "people";
+        string str = "";
+        if (Action == "")
+            Action = "people";
 
-    //    rapidInfoModel.Identity iden = rapidInfoModel.Identity.GetData(Action);
+        rapidInfoModel.Identity iden = rapidInfoModel.Identity.GetData(Action);
 
-    //    if (iden != null)
-    //    {
+        if (iden != null)
+        {
 
-    //        leftPanel.InnerHtml = "<img class='profileImg' src='" + ResolveClientUrl(@"~/Images/identity/" + iden.Id + ".jpg") + "' alt='" + iden.Name + "' />";
-
-
-    //        str += "<h1>" + iden.Name + "</h1>";
+            leftPanel.InnerHtml = "<img class='profileImg' src='" + ResolveClientUrl(@"~/Images/identity/" + iden.Id + ".jpg") + "' alt='" + iden.Name + "' />";
 
 
-    //        str += "<p>" + Cmn.GetUnCompressed(iden.Details, (int)iden.DetailsLength) + "</p>";
-
-    //        rightPanel.InnerHtml = str;
-
-    //        return;
-    //    }
+            str += "<h1>" + iden.Name + "</h1>";
 
 
-    //    rapidInfoModel.Area a = rapidInfoModel.Area.GetDataByName(Action);
+            str += "<p>" + Cmn.GetUnCompressed(iden.Details, (int)iden.DetailsLength) + "</p>";
 
-    //    List<rapidInfoModel.AreaLink> alList = rapidInfoModel.AreaLink.GetDataByArea(a.Id);
+            rightPanel.InnerHtml = str;
 
-    //    if (alList.Count == 0)
-    //    {
-    //        str += "<h1>" + a.Name + "</h1><br/>";
-    //        str += "<ul>";
-
-    //        List<rapidInfoModel.Area> ChildList = rapidInfoModel.Area.GetDataByParent(a.Id);
-
-    //        foreach (rapidInfoModel.Area child in ChildList)
-    //        {
-    //            str += "<li><a href='/" + child.Name.Replace(" ", "").ToLower() + "'>" + child.Name + "</a></li>";
-    //        }
-
-    //        str += "</ul>";
-
-    //    }
-    //    else
-    //    {
+            return;
+        }
 
 
-    //        //str += "<h1>";
+        rapidInfoModel.Area a = rapidInfoModel.Area.GetDataByName(Action);
 
-    //        foreach (rapidInfoModel.AreaLink al in alList)
-    //        {
-    //            str += "<h1>" + a.Name + "</h1><br/>";
+        List<rapidInfoModel.AreaLink> alList = rapidInfoModel.AreaLink.GetDataByArea(a.Id);
 
-    //            str += "<ul>";
+        if (alList.Count == 0)
+        {
+            str += "<h1>" + a.Name + "</h1><br/>";
+            str += "<ul>";
 
-    //            foreach (rapidInfoModel.AreaLink child in alList)
-    //            {
-    //                rapidInfoModel.Identity identity = rapidInfoModel.Identity.GetData(child.IdentityId);
+            List<rapidInfoModel.Area> ChildList = rapidInfoModel.Area.GetDataByParent(a.Id);
 
-    //                str += "<li><a href='/" + identity.Name.Replace(" ", "").ToLower() + "'>" + identity.Name + "</a></li>";
-    //            }
+            foreach (rapidInfoModel.Area child in ChildList)
+            {
+                str += "<li><a href='/" + child.Name.Replace(" ", "").ToLower() + "'>" + child.Name + "</a></li>";
+            }
 
-    //            str += "</ul>";
-    //        }
+            str += "</ul>";
+
+        }
+        else
+        {
 
 
-    //    }
+            //str += "<h1>";
 
-    //    rightPanel.InnerHtml = str;
+            foreach (rapidInfoModel.AreaLink al in alList)
+            {
+                str += "<h1>" + a.Name + "</h1><br/>";
+
+                str += "<ul>";
+
+                foreach (rapidInfoModel.AreaLink child in alList)
+                {
+                    rapidInfoModel.Identity identity = rapidInfoModel.Identity.GetData(child.IdentityId);
+
+                    str += "<li><a href='/" + identity.Name.Replace(" ", "").ToLower() + "'>" + identity.Name + "</a></li>";
+                }
+
+                str += "</ul>";
+            }
+
+
+        }
+
+        rightPanel.InnerHtml = str;
 
     }
 }
