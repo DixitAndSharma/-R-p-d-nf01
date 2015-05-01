@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <script src="../js/jquery-ui-autocomplete.min.js"></script>
     <link href="../css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />
+
     <script>
 
         $(document).ready(function () {
@@ -14,10 +15,13 @@
                 maxheight: 40, maxwidth: 40,
                 minLength: 1, select: function (event, ui) {
 
-                    $.ajax("/Data.aspx?Action=LinkAreas&Data1=" + ui.item.id + "&Data2=" + $(this).data('id'), function () {
+                    $.ajax({
 
-                        GetIdentity();
+                        cache: false, async: false, url: "/Data.aspx?Action=LinkAreas&Data1=" + ui.item.id + "&Data2=" + $(this).data('id'), success: function (data) {
 
+                            GetIdentity();
+
+                        }
                     });
 
                     $("#txtParentId").val(ui.item.id);
@@ -26,6 +30,14 @@
             });
 
         });
+
+        function UnlinkAreas(areaId, identityId) {
+            $.ajax("/Data.aspx?Action=UnlinkAreas&Data1=" + areaId + "&Data2=" + identityId, function () {
+
+                GetIdentity();
+
+            });
+        }
 
         function SendRequest(request, response) {
             var term = request.term;
@@ -37,6 +49,7 @@
         }
 
         function GetIdentity() {
+            
 
             $.fancybox.close();
             $.ajax({

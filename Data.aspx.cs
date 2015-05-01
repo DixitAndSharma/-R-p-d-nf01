@@ -33,7 +33,7 @@ public partial class GetData : System.Web.UI.Page
         string term = QueryString("term");
 
         db = new Database();
-        db2 = new Database();
+        db2 = new Database(Global.ConnectionStringrapidInfo);
         string encode = Cmn.GetEncode(this);
         try
         {
@@ -42,6 +42,7 @@ public partial class GetData : System.Web.UI.Page
                 case "GetAreas": GetAreas(); break;
                 case "GetIdentity": GetIdentity(); break;
                 case "LinkAreas": LinkAreas(Cmn.ToInt(Data1), Cmn.ToInt(Data2)); break;
+                case "UnlinkAreas": UnlinkAreas(Cmn.ToInt(Data1), Cmn.ToInt(Data2)); break;
 
                 case "SearchAreas":
                     SearchAreas(term);
@@ -80,6 +81,11 @@ public partial class GetData : System.Web.UI.Page
 
     }
 
+    void UnlinkAreas(int AreaId, int IdentityId)
+    {
+        db2.RunQuery("Delete from AreaLink Where AreaId=" + AreaId + " and IdentityId="+ IdentityId);
+    }
+
     void GetAreas()
     {
         List<rapidInfoModel.Area> list = rapidInfoModel.Area.GetData();
@@ -114,7 +120,9 @@ public partial class GetData : System.Web.UI.Page
                 {
                     rapidInfoModel.Area area = rapidInfoModel.Area.GetData(al.AreaId);
 
-                    sb.Append(area.Name + ",");
+                    sb.Append("<div class='alert alert-warning alert-dismissible' style='display:inline-block;padding:6px;padding-right:25px;' role='alert'>" +
+                        "<button type='button' class='close' data-dismiss='alert' onclick='UnlinkAreas(" + al.AreaId + "," + a.Id + ")' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>" +
+                        area.Name + "</strong></div> ");
                 }
             }
 

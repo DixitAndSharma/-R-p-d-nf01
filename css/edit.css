@@ -1,5 +1,16 @@
 ﻿body {
 }
-li.active{
-    background-color:#ebebeb;
+
+li.active {
+    background-color: #ebebeb;
 }
+
+
+.table {
+    margin-bottom: 0px !important;
+}
+
+
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        border-top: 0px;
+    }

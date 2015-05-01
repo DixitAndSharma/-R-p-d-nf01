@@ -49,7 +49,7 @@ public partial class Edit_AreaEdit : BasePage
 
             if (FileUpload.HasFile != false)
             {
-                try { FileUpload.SaveAs(ResolveClientUrl(FileName)); RegularExpressionValidator1.Visible = false; }
+                try { FileUpload.SaveAs(Server.MapPath(FileName)); RegularExpressionValidator1.Visible = false; }
                 catch (Exception ex) { Cmn.LogError(ex, "Image"); }
             }
         }

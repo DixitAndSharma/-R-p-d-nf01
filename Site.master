@@ -16,7 +16,31 @@
 </head>
 <body>
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-        <div class="container">
+        <script type="text/javascript">
+
+
+
+
+
+
+
+            $(document).ready(function (e) {
+
+                $('.catalog .submenu .has-submenu').hover(function () {
+
+                    var $offseTop = $(this).position().top;
+                    $('.catalog .submenu .offer .col-1 p').hide();
+                    $(this).find('.sub-submenu').css({ top: -$offseTop + "px" }).show();
+                }, function () {
+                    $(this).find('.sub-submenu').hide();
+                    $('.catalog .submenu .offer .col-1 p').show();
+                });
+
+            });
+
+        </script>
+
+        <%--<div class="container">
 
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -50,9 +74,196 @@
                 </form>
 
             </nav>
+        </div>--%>
+
+
+
+
+        <%--  <nav class="menu">
+            <div class="catalog-block">
+                <div class="container">
+
+
+
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span id="logo">
+
+                            <a href="../" class="navbar-brand">RapidInfo</a>
+                        </span>
+
+
+                    </div>
+
+
+
+                    <ul class="catalog">
+                        <li class="has-submenu"><a href="/people">People<i class="fa fa-chevron-down"></i></a>
+                            <ul class="submenu">
+
+                                <li class="has-submenu"><a href="/entertainment">Entertainment</a>
+                                    <ul class="sub-submenu" style="top: -41px; display: none;">
+                                        <li><a href="#">Bollywood Actors</a></li>
+                                        <li><div style="padding:10px"><img src="image/entertainment.jpg" /></div></li>
+                                    </ul>
+                                    
+                                </li>
+                                <li class="has-submenu"><a href="#">Sports</a><!--Class "has-submenu" for adding carret and dropdown-->
+                                    <div class="offer">
+                                    <div class="col-1">
+                                    <ul class="sub-submenu" style="top: -41px; display: none;">
+                                        <li><a href="#">Cricket</a></li>
+                                        <li><a href="#">Football</a></li>
+                                        <li><a href="#">Tennis</a></li>
+                                        <li><a href="#">Hockey</a></li>
+                                        <li><a href="#">Badminton</a></li>
+                                        
+                                    </ul></div>
+                                    <div class="col-2">
+                                    <ul class="sub-submenu" style="top: -41px; display: none;">
+                                        <li><a href="#">Badminton</a></li>
+                                        <li><a href="#">Badminton</a></li>
+                                        <li><a href="#">Badminton</a></li>
+                                        <li><a href="#">Badminton</a></li>
+                                        <li><a href="#">Badminton</a></li>
+                                        </ul>
+                                        </div>
+                                        </div>
+                                </li>
+                                <li><a href="#">Potitics</a></li>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Science & Technology</a></li>
+                                <li><a href="#">Literature</a></li>
+                                <li class="offer">
+        
+                                </li>
+                            </ul>
+                        </li>
+                        
+
+                    </ul>
+                </div>
+            </div>
+        </nav>--%>
+        <div class="container">
+            <div class="navbar navbar-tshop navbar-fixed-top megamenu" style="position: static">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i class="fa fa-shopping-cart colorWhite"></i><span class="cartRespons colorWhite">Cart ($210.00) </span></button>
+                        <a class="navbar-brand " href="index.html">RapidInfo
+                <%--    <img src="images/logo.png" alt="TSHOP">--%>
+                        </a>
+
+                        <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
+                            <div class="input-group">
+                                <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Entertainment <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="megamenu-content ">
+                                        <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
+                                            <li><a href="#">Bollywood Actors</a></li>
+                                            <li><a href="#">Music Directors</a></li>
+                                            <li><a href="#">Film Directors</a></li>
+                                            <li><a href="#">Film Producers</a></li>
+                                            <li><a href="#">Singers</a></li>
+                                            <li><a href="#">Dancers</a></li>
+                                            <li><a href="#">Comedians</a></li>
+                                        </ul>
+                                        <ul class="col-lg-3  col-sm-3 col-md-3  col-xs-4">
+                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                                <img class="img-responsive" src="image/bollywood-actors.jpg" style="height: 140px; width: 247px" alt="product">
+                                                <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>Bollywood Actors </span></a></li>
+                                        </ul>
+                                        <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
+                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                                <img class="img-responsive" src="image/music.jpg" style="height: 140px; width: 247px" alt="product">
+                                                <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>Music Directors </span></a></li>
+                                        </ul>
+                                        <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
+                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                                <img class="img-responsive" src="image/singing.jpg" style="height: 140px; width: 247px" alt="product">
+                                                <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>Singers </span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Sports <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="megamenu-content ">
+                                        <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
+                                            <li><a href="#">Cricket</a></li>
+                                            <li><a href="#">Football</a></li>
+                                            <li><a href="#">Tennis</a></li>
+                                            <li><a href="#">Hockey</a></li>
+                                            <li><a href="#">Badminton</a></li>
+                                            <li><a href="#">Chess</a></li>
+                                            <li><a href="#">Wrestling</a></li>
+                                            <li><a href="#">Basket Ball</a></li>
+                                            <li><a href="#">Table Tennis</a></li>
+                                        </ul>
+                                        <ul class="col-lg-3  col-sm-3 col-md-3  col-xs-4">
+                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                                <img class="img-responsive" src="image/cricket.jpg" style="height: 140px; width: 247px" alt="product">
+                                                <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>CRICKET </span></a></li>
+                                        </ul>
+                                        <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
+                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                                <img class="img-responsive" src="image/football.jpg" style="height: 140px; width: 247px" alt="product">
+                                                <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>FOOTBALL </span></a></li>
+                                        </ul>
+                                        <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
+                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                                <img class="img-responsive" src="image/tennis.jpg" style="height: 140px; width: 247px" alt="product">
+                                                <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>TENNIS </span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Literature <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="megamenu-content ">
+                                        <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
+                                            <li><a href="#">English Authors</a></li>
+                                            <li><a href="#">Hindi Authors</a></li>
+                                            <li><a href="#">Regional Language Authors</a></li>
+                                            <li><a href="#">Poets</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Science & Technology <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="megamenu-content ">
+                                        <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
+                                            <li><a href="#">Scientists</a></li>
+                                            <li><a href="#">Technocrats</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Business </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     </header>
-    <div id="main-menu">
+    <%--  <div id="main-menu">
         <div id="menulist">
             <ul class="list">
                 <li class="active">All Categories</li>
@@ -89,9 +300,9 @@
 
             </ul>
         </div>
-    </div>
+    </div>--%>
 
-    <div class="container">
+    <div class="container" style="padding-top: 45px">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
     </div>

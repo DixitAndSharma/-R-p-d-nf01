@@ -12,6 +12,8 @@
     <script src="../js/jquery.min.js"></script>
     <link href="/css/jquery.cleditor.css" rel="stylesheet" />
     <script src="/js/jquery.cleditor.min.js"></script>
+    <link href="../css/edit.css" rel="stylesheet" />
+
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -69,7 +71,7 @@
                     </td>
                 </tr>
 
-                
+
 
             </table>
         </div>
