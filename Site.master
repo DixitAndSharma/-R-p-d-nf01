@@ -156,7 +156,7 @@
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i class="fa fa-shopping-cart colorWhite"></i><span class="cartRespons colorWhite">Cart ($210.00) </span></button>
-                        <a class="navbar-brand " href="index.html">RapidInfo
+                        <a class="navbar-brand " href="/">RapidInfo
                 <%--    <img src="images/logo.png" alt="TSHOP">--%>
                         </a>
 
@@ -170,7 +170,7 @@
 
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Entertainment <b class="caret"></b></a>
+                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="/entertainment">Entertainment <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li class="megamenu-content ">
                                         <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
@@ -200,7 +200,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Sports <b class="caret"></b></a>
+                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="/sports">Sports <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li class="megamenu-content ">
                                         <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
@@ -232,7 +232,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Literature <b class="caret"></b></a>
+                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="/literature">Literature <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li class="megamenu-content ">
                                         <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
@@ -244,7 +244,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Science & Technology <b class="caret"></b></a>
+                            <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="/scienceandtechnology">Science & Technology <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li class="megamenu-content ">
                                         <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
@@ -254,7 +254,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#">Business </a></li>
+                            <li><a href="/business-economy">Business </a></li>
                         </ul>
                     </div>
                 </div>
