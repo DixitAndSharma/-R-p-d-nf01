@@ -1,0 +1,20 @@
+﻿  {
+  "name": "rapid",
+  "version":"2.2", 
+  "manifest_version": 2,
+  "icons": {"48": "icon48.png","16":"rapid16.ico","48": "rapid48.png"}, 
+   "content_scripts": [
+    {
+      "matches": ["http://*/*","https://*./*"],
+      "js": ["jquery-1.9.1.min.js","popup.js"]
+    }
+  ],
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+  "browser_action": {
+      "default_title": "rapid",      
+      "default_popup": "popup.html"
+  }
+   }
+  
