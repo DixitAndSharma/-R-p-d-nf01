@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
     <title>RapidInfo- Indian Personalities at a glance </title>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -12,6 +13,8 @@
     <script src="js/site.js"></script>
     <link href="css/mash.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="image/icon.png" />
+    <script src="../js/jquery-ui-autocomplete.min.js"></script>
+    <link href="../css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -19,13 +22,36 @@
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
         <script type="text/javascript">
 
-
-
-
-
-
-
             $(document).ready(function (e) {
+
+                function SendRequest(request, response) {
+                    var term = request.term;
+
+                    lastXhr = $.getJSON("/Data.aspx?Action=commonSearch", request, function (data, status, xhr) {
+                        if (xhr === lastXhr)
+                            response(data);
+                    });
+                }
+
+
+                $("#txtSearch").autocomplete({
+                    maxheight: 40, maxwidth: 40,
+                    minLength: 1, select: function (event, ui) {
+
+                        if (ui.item.Type == "identity") {
+
+                            updateRecentList(ui.item.value, ui.item.id);
+
+                        }
+
+
+                        location.href = "/" + ui.item.value.replace(' ','').toLowerCase();
+
+                        $("#txtParentId").val(ui.item.value);
+
+                    }, source: SendRequest, autoFocus: true
+                });
+
 
                 $('.catalog .submenu .has-submenu').hover(function () {
 
@@ -38,6 +64,51 @@
                 });
 
             });
+
+            function updateRecentList(value, id) {
+                var newArray = new Array();
+                var array = LoadFromLocalStorage("recent") != "" ? LoadFromLocalStorage("recent") : null;
+                array = array == null ? new Array() : JSON.parse(array);
+                var Found = -1;
+
+                $(array).each(function (ii) {
+                    if (this.name == value)
+                        Found = ii;
+                });
+
+                var condition = CheckExistence(id);
+
+                if (condition)
+                    array.splice(Found, 1);
+
+                else if (Found == -1)
+                    newArray.push({ id: id, name: value });
+
+                $(array).each(function (ii) {
+                    var condi = newArray.length <= 6;
+
+                    if (condi)
+                        newArray.push(this);
+                });
+
+                SaveInLocalStorage("recent", JSON.stringify(newArray));
+            }
+
+            function CheckExistence(ID) {
+
+                var array = (LoadFromLocalStorage("recent") != null && LoadFromLocalStorage("recent") != "") ? JSON.parse(LoadFromLocalStorage("recent")) : null;
+
+                var IsExist = false;
+                $(array).each(function () {
+                    var condi = this.id == ID;
+
+                    if (condi)
+                        IsExist = true;
+                });
+
+                return IsExist;
+            }
+
 
         </script>
 
@@ -156,7 +227,6 @@
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i class="fa fa-shopping-cart colorWhite"></i><span class="cartRespons colorWhite">Cart ($210.00) </span></button>
                         <a class="navbar-brand " href="/">RapidInfo
                 <%--    <img src="images/logo.png" alt="TSHOP">--%>
                         </a>
@@ -175,26 +245,26 @@
                                 <ul class="dropdown-menu">
                                     <li class="megamenu-content ">
                                         <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
-                                            <li><a href="#">Bollywood Actors</a></li>
-                                            <li><a href="#">Music Directors</a></li>
-                                            <li><a href="#">Film Directors</a></li>
-                                            <li><a href="#">Film Producers</a></li>
-                                            <li><a href="#">Singers</a></li>
-                                            <li><a href="#">Dancers</a></li>
-                                            <li><a href="#">Comedians</a></li>
+                                            <li><a href="/bollywoodactors">Bollywood Actors</a></li>
+                                            <li><a href="/musicdirectors">Music Directors</a></li>
+                                            <li><a href="/filmdirectors">Film Directors</a></li>
+                                            <li><a href="/filmproducers">Film Producers</a></li>
+                                            <li><a href="/singers">Singers</a></li>
+                                            <li><a href="/dancers">Dancers</a></li>
+                                            <li><a href="/comedians">Comedians</a></li>
                                         </ul>
                                         <ul class="col-lg-3  col-sm-3 col-md-3  col-xs-4">
-                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                            <li><a class="newProductMenuBlock" href="/bollywoodactors">
                                                 <img class="img-responsive" src="image/bollywood-actors.jpg" style="height: 140px; width: 247px" alt="product">
                                                 <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>Bollywood Actors </span></a></li>
                                         </ul>
                                         <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
-                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                            <li><a class="newProductMenuBlock" href="/musicdirectors">
                                                 <img class="img-responsive" src="image/music.jpg" style="height: 140px; width: 247px" alt="product">
                                                 <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>Music Directors </span></a></li>
                                         </ul>
                                         <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
-                                            <li><a class="newProductMenuBlock" href="product-details.html">
+                                            <li><a class="newProductMenuBlock" href="/singers">
                                                 <img class="img-responsive" src="image/singing.jpg" style="height: 140px; width: 247px" alt="product">
                                                 <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>Singers </span></a></li>
                                         </ul>
@@ -205,15 +275,15 @@
                                 <ul class="dropdown-menu">
                                     <li class="megamenu-content ">
                                         <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
-                                            <li><a href="#">Cricket</a></li>
-                                            <li><a href="#">Football</a></li>
-                                            <li><a href="#">Tennis</a></li>
-                                            <li><a href="#">Hockey</a></li>
-                                            <li><a href="#">Badminton</a></li>
-                                            <li><a href="#">Chess</a></li>
-                                            <li><a href="#">Wrestling</a></li>
-                                            <li><a href="#">Basket Ball</a></li>
-                                            <li><a href="#">Table Tennis</a></li>
+                                            <li><a href="/cricket">Cricket</a></li>
+                                            <li><a href="/football">Football</a></li>
+                                            <li><a href="/tennis">Tennis</a></li>
+                                            <li><a href="/hockey">Hockey</a></li>
+                                            <li><a href="/badminton">Badminton</a></li>
+                                            <li><a href="/chess">Chess</a></li>
+                                            <li><a href="/wrestling">Wrestling</a></li>
+                                            <li><a href="/basketball">Basket Ball</a></li>
+                                            <li><a href="/tabletennis">Table Tennis</a></li>
                                         </ul>
                                         <ul class="col-lg-3  col-sm-3 col-md-3  col-xs-4">
                                             <li><a class="newProductMenuBlock" href="product-details.html">
@@ -255,8 +325,17 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="/business-economy">Business </a></li>
+                            <li><a href="/politics">Politics </a></li>
+                            <%--  <li><a href="/business-economy">Business </a></li>--%>
                         </ul>
+
+                        <div class="input-group" style="margin-top: 14px; color: white; background: #0072A9; border: #0072A9;">
+                            <input type="text" class="form-control" id="txtSearch" style="color: white; background: #0072A9; border: #0072A9;" placeholder="Search for...">
+                            <span class="input-group-btn" style="color: white; background: #0072A9; border: #0072A9; margin: 0px">
+                                <button class="btn btn-default" type="button"><span style="color: white; background: #0072A9; border: #0072A9;" class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -303,10 +382,33 @@
         </div>
     </div>--%>
 
-    <div class="container" style="padding-top: 45px">
+    <div class="container" style="padding-top: 45px; padding-bottom: 60px; min-height: 550px">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
     </div>
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3>Entertainment </h3>
+                        <ul>
+                            <li><a href="/bollywoodactors">Bollywood Actors </a></li>
+                            <li><a href="/musicdirectors">Music Directors</a></li>
+                            <li><a href="/filmdirectors">Film Directors</a></li>
+                            <li><a href="/filmproducers">Film Producers</a></li>
+                            <li><a href="/singers">Singers</a></li>
+                            <li><a href="/dancers">Dancers</a></li>
+                            <li><a href="/comedians">Comedians</a></li>
 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
+
+

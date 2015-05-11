@@ -7,6 +7,7 @@ namespace rapidInfoModel
 {
     public partial class Area
     {
+        public string searchName = "";
 
         public Area()
         {

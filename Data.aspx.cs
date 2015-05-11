@@ -49,6 +49,14 @@ public partial class GetData : System.Web.UI.Page
                     Cmn.WriteResponse(this, sb.ToString(), encode);
                     return;
 
+                case "commonSearch":
+                    commonSearch(term);
+                    Cmn.WriteResponse(this, sb.ToString(), encode);
+                    return;
+
+                    
+
+
                 //SearchAreas
 
             }
@@ -130,6 +138,49 @@ public partial class GetData : System.Web.UI.Page
             sb.Append("~");
         }
 
+    }
+
+
+    void commonSearch(string term)
+    {
+        if (term == "")
+            return;
+
+        List<rapidInfoModel.Area> list = rapidInfoModel.Area.GetData(term);
+
+        StringBuilder Result = new StringBuilder();
+        int ctr = 0;
+        foreach (rapidInfoModel.Area a in list)
+        {
+            Result.Append(",{\"id\":\"" + a.Id
+                + "\",\"label\":\"" + a.Name
+                + "\",\"value\":\"" + a.Name
+                + "\",\"Name\":\"" + a.Name
+                + "\",\"Type\":\"" + "area"
+                + "\"}");
+
+            if (ctr++ > 5)
+                break;
+        }
+
+        List<rapidInfoModel.Identity> IdentityList = rapidInfoModel.Identity.GetList(term);
+
+
+        foreach (rapidInfoModel.Identity a in IdentityList)
+        {
+            Result.Append(",{\"id\":\"" + a.Id
+                + "\",\"label\":\"" + a.Name
+                + "\",\"value\":\"" + a.Name
+                + "\",\"Name\":\"" + a.Name
+                + "\",\"Type\":\"" + "identity"
+                + "\"}");
+
+            if (ctr++ > 10)
+                break;
+        }
+
+        if (Result.Length > 0)
+            sb.Append("[" + Result.ToString().Substring(1) + "]");
     }
 
     void SearchAreas(string term)

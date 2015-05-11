@@ -65,6 +65,16 @@
 
                 <tr>
                     <td>
+                        <asp:Label runat="server" ID="lblImage"></asp:Label></td>
+                    <td>
+                        <asp:FileUpload ID="FileUpload" runat="server" />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Only image files are allowed!" ForeColor="Red" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.jpeg|.gif|.bmp)$" ControlToValidate="FileUpload"
+                            Display="Dynamic"></asp:RegularExpressionValidator>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
                     </td>
                     <td>
                         <asp:Button Text="Save" runat="server" OnClick="Unnamed1_Click" />                    </td>

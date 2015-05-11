@@ -10,6 +10,7 @@ public partial class _Default : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         base.Page_Load(sender, e);
 
         string str = "";
@@ -49,7 +50,7 @@ public partial class _Default : BasePage
 
             foreach (rapidInfoModel.Area child in ChildList)
             {
-                if (ctr % 4 == 0)
+                if (ctr % 4 == 0 && ctr != 0)
                     str += "</div><br><br><div class='row'>";
 
                 string image = @"\image\" + child.Name.Replace(" ", "-").ToLower() + ".jpg";
@@ -57,8 +58,8 @@ public partial class _Default : BasePage
                 if (!File.Exists(Server.MapPath(image)))
                     image = @"\image\notavailable.jpg";
 
-                str += "<div class='col-md-3 ' ><a class='newProductMenuBlock' href='/" + child.Name.Replace(" ", "").ToLower() +
-                "'><img class='img-responsive' style='width:100%;height:147px' src='" + image + "'><span class='ProductMenuCaption'><i class='fa fa-caret-right'></i>" + child.Name + "</span></div>";
+                str += "<div class='col-md-3 ' ><div style='border:1px solid rgb(134, 134, 134);padding:2px'><a class='newProductMenuBlock' href='/" + child.Name.Replace(" ", "").ToLower() +
+                "'><img class='img-responsive' style='width:100%;height:147px' src='" + image + "'><span class='ProductMenuCaption'><i class='fa fa-caret-right'></i>" + child.Name + "</span></a></div></div>";
 
                 ctr++;
 
@@ -77,16 +78,30 @@ public partial class _Default : BasePage
 
             str += "<h1>" + a.Name + "</h1><br/>";
 
-            str += "<ul>";
+            str += "<div class='row'>";
+            var ctr = 0;
 
             foreach (rapidInfoModel.AreaLink child in alList)
             {
+                if (ctr % 4 == 0 && ctr != 0)
+                    str += "</div><br><br><div class='row'>";
+
                 rapidInfoModel.Identity identity = rapidInfoModel.Identity.GetData(child.IdentityId);
 
-                str += "<li><a href='/" + identity.Name.Replace(" ", "").ToLower() + "'>" + identity.Name + "</a></li>";
+                string image = @"\images\identity\" + identity.Id + ".jpg";
+
+                if (!File.Exists(Server.MapPath(image)))
+                    image = @"\image\notavailable.jpg";
+
+                str += "<div class='col-md-2 ' ><div style='border:1px solid rgb(134, 134, 134);padding:2px'><a class='newProductMenuBlock' href='/" + identity.Name.Replace(" ", "").ToLower() +
+                "'><img class='img-responsive' style='width:100%;height:170px' src='" + image + "'><span class='ProductMenuCaption'><i class='fa fa-caret-right'></i>" + identity.Name + "</span></div></div>";
+
+                ctr++;
+
+                //str += "<li><a href='/" + identity.Name.Replace(" ", "").ToLower() + "'>" + identity.Name + "</a></li>";
             }
 
-            str += "</ul>";
+            str += "</div>";
 
 
 
