@@ -29,7 +29,6 @@ public partial class Edit_AreaEdit : BasePage
                 rapidInfoModel.Area parent = rapidInfoModel.Area.GetData(Cmn.ToInt(a.ParentId));
 
                 txtParentName.Text = parent.Name;
-                lblImage.Text = "<img src='" + ResolveClientUrl(@"~/image/" + a.Name.Replace(" ","-") + ".jpg") + "' alt='" + a.Name + "' height='80' />";
             }
         }
 
@@ -44,19 +43,6 @@ public partial class Edit_AreaEdit : BasePage
         a.Name = txtName.Text;
         a.ParentId = Cmn.ToInt(txtParentId.Value);
         a.Save();
-
-        if (a != null)
-        {
-
-            string FileName = @"~\image\" + a.Name.Replace(" ","-") + ".jpg";
-
-            if (FileUpload.HasFile != false)
-            {
-                try { FileUpload.SaveAs(Server.MapPath(FileName)); RegularExpressionValidator1.Visible = false; }
-                catch (Exception ex) { Cmn.LogError(ex, "Image"); }
-            }
-        }
-
 
         WriteClientScript("parent.GetAreas();");
     }

@@ -3,7 +3,6 @@ using System.Web;
 using System.Collections.Generic;
 using System.Collections;
 //using eCabModel;
-using rapidInfoModel;
 using System.Linq;
 using System.Timers;
 
@@ -24,32 +23,12 @@ public class Global
     }
 
     public static List<ComparePairs> comparePairs = new List<ComparePairs>();
-    public static Dictionary<int, Area> AreaList = new Dictionary<int, Area>();
 
     public class ComparePairs
     {
         public int id1;
         public int id2;
     }
-
-    public static void LoadGlobalData()
-    {
-        using (rapidInfoEntities context = new rapidInfoEntities())
-        {
-            AreaList.Clear();
-            foreach (Area A in context.Areas)
-            {
-                //A.searchName
-
-
-                AreaList.Add(A.Id, A);
-
-
-
-            }
-        }
-    }
-
 
     public static string GetRootPathVirtual
     {
